@@ -1,10 +1,11 @@
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://admin:<db_password>@twitter.pia6p.mongodb.net/?retryWrites=true&w=majority&appName=twitter";
 const express = require("express");
 const axios = require("axios");
 require("dotenv").config();
 const app = express();
 const UAParser = require("ua-parser-js");
 const cors = require("cors");
-const { MongoClient } = require("mongodb");
 const sgMail = require("@sendgrid/mail");
 const cloudinary = require("cloudinary").v2;
 const multer = require("multer");
@@ -41,7 +42,6 @@ app.use(express.json());
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
 
 async function run() {
